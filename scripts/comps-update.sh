@@ -3,7 +3,7 @@ function save_comps() {
 save_fn=$1
 urlbase=$2
 url=$urlbase/repodata/repomd.xml
-comps=$( wget -O - "$url" 2>/dev/null | perl -lwne 'if (/"([^"]+-comps[^"]*.xml.gz)"/) {print $1}' )
+comps=$( wget -O - "$url" 2>/dev/null | perl -lwne 'if (/"([^"]*comps[^"]*.xml.gz)"/) {print $1}' )
 wget -O $save_fn $urlbase/$comps
 }
 pushd $(dirname "$0")/..
