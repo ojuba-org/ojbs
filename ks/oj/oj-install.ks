@@ -19,10 +19,6 @@ services --enabled=NetworkManager,dhcdbd --disabled=network,sshd,irqbalance,send
 
 %include repos.ks
 
-# just to make sure
--fedora-release*
-ojuba-release
-
 # Package manifest for the compose.  Uses repo group metadata to translate groups.
 # (@base is added by default unless you add --nobase to %packages)
 # (default groups for the configured repos are added by --default)
@@ -89,5 +85,10 @@ wireshark-gnome
 -*javadoc*
 -frysk
 -*gcj*
+
+# just to make sure
+-fedora-release*
+ojuba-release
+
 %end
 
