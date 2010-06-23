@@ -52,7 +52,8 @@ s:^(\s*\Q<packagereq type="conditional" requires="aspell">aspell-ar</packagereq>
 
 
 # sound-and-video
-s:^(\s*\Q<packagereq type="default">cdparanoia</packagereq>\E):${1}\n<packagereq type="default">ojuba-mimic</packagereq>\n<packagereq type="default">pitivi</packagereq>\n<packagereq type="default">gstreamer-plugins-bad</packagereq>\n<packagereq type="default">gstreamer-plugins-bad-extras</packagereq>\n<packagereq type="default">gstreamer-plugins-good</packagereq>\n<packagereq type="default">gstreamer-plugins-ugly</packagereq>\n<packagereq type="default">libdvdcss</packagereq>\n<packagereq type="optional">audacity-freeworld</packagereq>\n
+s:^(\s*\Q<packagereq type="default">cdparanoia</packagereq>\E):${1}\n<packagereq type="default">ojuba-mimic</packagereq>\n<packagereq type="default">pitivi</packagereq>\n<packagereq type="default">gstreamer-ffmpeg</packagereq>\n<packagereq type="default">gstreamer-plugins-bad</packagereq>\n<packagereq type="default">gstreamer-plugins-bad-free</packagereq>\n<packagereq type="default">
+gstreamer-plugins-bad-nonfree</packagereq>\n<packagereq type="default">gstreamer-plugins-bad-free-extras</packagereq>\n</packagereq>\n<packagereq type="default">gstreamer-plugins-good</packagereq>\n<packagereq type="default">gstreamer-plugins-ugly</packagereq>\n<packagereq type="default">libdvdcss</packagereq>\n<packagereq type="optional">audacity-freeworld</packagereq>\n
 :;
 
 # make evolution optional
