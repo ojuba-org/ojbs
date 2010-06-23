@@ -378,8 +378,9 @@ do
   rpm --import $i > /dev/null || :
 done
 echo "Packages within this LiveCD"
+echo "---- PACKAGE LISTING STARTS HERE ---"
 rpm -qa
-
+echo "---- PACKAGE LISTING ENDS HERE ---"
 # go ahead and pre-make the man -k cache (#455968)
 /usr/sbin/makewhatis -w
 
