@@ -134,6 +134,9 @@ xfce4-xkb-plugin
 -eclipse-pde
 joe
 emacs
+python3
+python3-tools
+python3-setuptools
 @education
 ojuba-desktop-settings
 ojuba-gnome-settings
@@ -402,6 +405,7 @@ python-chm
 xulrunner-devel
 xulrunner-python
 python-docs
+pygtk2-doc
 nasm
 #php*
 php-cli
@@ -575,13 +579,156 @@ warzone2100
 #wesnoth
 #torcs
 
+# make sure that totem is there
+totem
+rhythmbox
+# adding general apps
+gnome-ppp
+gnome-packagekit
+gnome-user-share
+cdparanoia
+nautilus-extensions
+nautilus-*
+seahorse
+seahorse-plugins
+realcrypt
+festival
+festvox-slt-arctic-hts
+hunspell-en
+# some utils
+hardinfo
+stardict
+uget
+# arabic support
+openoffice.org-langpack-ar
+hunspell-ar
+hijra-applet
+minbar
+arabeyes-core-fonts
+arabeyes-decorative-fonts
+kacst-fonts
+me_quran-fonts
+msttcore-fonts
+# dictionaries
+stardict-Arabeyes-en-ar
+stardict-Babylon-ar-en
+cheese
+pitivi
+istanbul
+ojuba-mimic
+#gtk-recordmydesktop
+gstreamer-ffmpeg
+gstreamer-plugins-bad
+gstreamer-plugins-bad-extras
+gstreamer-python
+gstreamer-plugins-ugly
+#smplayer
+dvgrab
+kino
+kdenlive
+openshot
+easytag
+w32codecs
+flash-plugin
+libflashsupport
+gecko-mediaplayer
+exaile
+AcetoneISO2
+ojuba-virtual-cd
+k3b
+k3b-extras-freeworld
+transcode
+libdvdcss
+audacity-freeworld
+audacious
+avidemux
+devede
+k9copy
+brasero
+banshee
+dvdrip
+#mythtv
+xawtv
+kdetv
+vdr
+# chm
+#archmage
+kchmviewer
+phonon-backend-gstreamer
+phonon-backend-xine
+
+######################################
+firstaidkit
+firstaidkit-plugin-all 
+enscript
+pavucontrol
+pulseaudio-utils
+joystick
+kerneloops
+libertas-usb8388-firmware
+libevent
+libgpod
+libmtp
+bluez-cups
+bluez-alsa
+bluez-gnome-analyzer
+bluez-gstreamer
+system-config-boot
+system-config-language
+system-config-lvm
+system-config-rootpassword
+smartmontools-config
+yum-utils
+# some yum plugins <alsadi@ojuba.org
+yum-fastestmirror
+yum-kernel-module
+# for our sound up script we need alsa-utils <alsadi@ojuba.org
+alsa-utils
+alsa-plugins-pulseaudio
+# gparted
+isomd5sum
+
+####################
+## add sun's java
+-java-1.6.0-openjdk*
+java-1.6.0-sun*
+netbeans
+groovy
+grails
+###################
+# remote desktop
+vino
+gnome-rdp
+vinagre
+pyvnc2swf
+####################
+## allow composing
+pungi
+livecd-tools
+liveusb-creator
+anaconda-yum-plugins
+anaconda
+cracklib-python
+iscsi-initiator-utils
+memtest86+
+
 # some savings
+-xorg-x11-docs
+#-kernel-doc
+-java-1.5.0-gcj-src
+-java-1.5.0-gcj-devel
+-libgcj-src
+-*javadoc*
+-frysk
+-*gcj*
 -gcompris-sound-fr
 -gcompris-sound-de
 -kde-l10n-German
 -kde-l10n-French
 -openoffice.org-langpack-de
 -Cg
+-dasher
+
 
 # just to make sure
 ojuba-release
