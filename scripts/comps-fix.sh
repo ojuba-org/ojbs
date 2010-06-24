@@ -29,7 +29,9 @@ pushd $(dirname "$0")/..
 
 perl -lwpe '
 # TODO: add media-repo
+# slmodem no longer available
 # hardware support
+s:^(\s*\Q<packagereq type="default">alsa-firmware</packagereq>\E):${1}\n<packagereq type="default">kmod-em8300</packagereq>\n<packagereq type="default">akmod-omnibook</packagereq>\n<packagereq type="default">kmod-rt2860</packagereq>\n<packagereq type="default">kmod-rt2870</packagereq>\n<packagereq type="default">kmod-rt3070</packagereq>\n<packagereq type="default">kmod-wl</packagereq>\n<packagereq type="optional">kmod-ndiswrapper</packagereq>:;
 
 # base
 s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n      <packagereq type="default">xz-lzma-compat</packagereq>\n<packagereq type="default">p7zip</packagereq>\n<packagereq type="default">xz</packagereq>\n<packagereq type="default">unrar</packagereq>\n<packagereq type="default">yum-plugin-fastestmirror</packagereq>\n<packagereq type="default">yum-presto</packagereq>\n<packagereq type="default">google-release</packagereq>\n<packagereq type="default">rpmfusion-free-release</packagereq>\n      <packagereq type="default">rpmfusion-nonfree-release</packagereq>\n:;
