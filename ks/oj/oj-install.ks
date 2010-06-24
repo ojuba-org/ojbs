@@ -73,9 +73,6 @@ wireshark-gnome
 # we use VirtualBox < alsadi@ojuba.org
 # Virt group
 #@virtualization --optional
-
-# Virt group
-@virtualization --optional
 # filesystem stuff
 @filesystems
 # Languages
@@ -138,6 +135,9 @@ xfce4-xkb-plugin
 joe
 emacs
 @education
+ojuba-desktop-settings
+ojuba-gnome-settings
+ojuba-samples-thawab
 drgeo
 drgeo-doc
 fantasdic
@@ -274,9 +274,113 @@ powertop
 wlassistant
 conky
 fdupes
-# was in fedora DVD and let's put them back
+xfwm4-themes
+oxygen-cursor-themes
+gnome-themes-extras
+deskbar-applet
+hamster-applet
+emerald-themes
+cairo-dock
+cairo-dock-plug-ins
+cairo-dock-plug-ins-webkit
+cairo-dock-plug-ins-xfce
+screenlets
+bluecurve-gtk-themes
+gtk-murrine-engine
+gtk-nodoka-engine-extras
+fusion-icon-gtk
+fusion-icon-qt
+avant-window-navigator
+awn-extras-applets
+compiz-fusion-extras
+compiz-fusion-extras-gnome
+ccsm
+emerald
+gnomenu
+mintmenu
+gnome-do
+gnome-do-plugins
+gnome-do-plugins-firefox
+gnome-do-plugins-thunderbird
+gnome-do-plugins-eog
+gnome-do-plugins-pidgin
+xscreensaver
+xscreensaver-extras
+xscreensaver-extras-gss
+xscreensaver-gl-base
+xscreensaver-gl-extras
+xscreensaver-gl-extras-gss
+rss-glx
+rss-glx-gnome-screensaver
+rss-glx-kde
+rss-glx-xscreensaver
+gconf-editor
+gtk-qt-engine
+google-gadgets
+google-gadgets-gtk
+google-gadgets-qt
+gnome-phone-manager
+
+# free extra utils
+p7zip
+p7zip-plugins
+xz
+fuse-encfs
+fuse-gmailfs
+fuse-smb
+fuse-sshfs
+fuse-zip
+fusecompress
+zfs-fuse
+bsdiff
+ffmpeg
+freetype-freeworld
+# extra non-free tools
+unrar
+# releases
+google-release
+# extra non-free drivers
+-qemu*
+-kmod-kqemu
+kmod-em8300
+kmod-rt2860
+kmod-rt2870
+kmod-rt3070
+kmod-wl
+kmod-ndiswrapper
+kmod-nvidia
+akmod-em8300
+akmod-rt2860
+akmod-rt2870
+akmod-rt3070
+akmod-wl
+akmod-ndiswrapper
+akmod-nvidia
+akmod-em8300
+#############
+# NOTE by alsadi@ojuba.org: nss-mdns not avialable on DVD but it's only 24K, to be reconsidered
+nss-mdns
+
+cnetworkmanager
+NetworkManager-vpnc
+NetworkManager-openvpn
+NetworkManager-openconnect
+NetworkManager-pptp
+NetworkManager-vpnc
+
+knetworkmanager
+knetworkmanager-openvpn
+knetworkmanager-pptp
+knetworkmanager-vpnc
+
+ModemManager
+gtraffic
+
+
+# those two was in fedora DVD and let's put them back
 avahi-tools
 bridge-utils
+
 ################
 # development
 ################
@@ -409,6 +513,15 @@ tomcat6-webapps
 reiserfs-utils
 xfsprogs
 jfsutils
+wine
+wine-pulseaudio
+dosbox
+VirtualBox-OSE
+kmod-VirtualBox-OSE
+akmod-VirtualBox-OSE
+VirtualBox-OSE-guest
+pyvnc2swf
+
 
 @hardware-support --optional
 foo2*
@@ -422,6 +535,45 @@ xorg-x11-drv-ivtv
 xorg-x11-drv-tseng
 xorg-x11-drv-s3
 xorg-x11-drv-avivo
+
+####################
+# adding some games
+####################
+gnome-games
+chess
+heroes
+atomix
+pingus
+pengupop
+rocksndiamonds
+megamario
+mirrormagic
+solarwolf
+KoboDeluxe
+smc
+extremetuxracer
+lmarbles
+ltris
+lbrickbuster2
+#Ri-li
+barrage
+supertux
+enigma
+gbrainy
+frozen-bubble
+neverball
+foobillard
+armacycles-ad
+# too big games
+#nexuiz
+xmoto
+#FlightGear
+supertuxkart
+maniadrive
+wormux
+warzone2100
+#wesnoth
+#torcs
 
 # some savings
 -gcompris-sound-fr
