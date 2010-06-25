@@ -345,6 +345,7 @@ google-release
 # extra non-free drivers
 -qemu*
 -kmod-kqemu
+mesa-dri-drivers-experimental
 kmod-em8300
 kmod-rt2860
 kmod-rt2870
