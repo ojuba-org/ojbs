@@ -3,7 +3,10 @@
 %packages
 @graphical-internet
 @sound-and-video
+-gstreamer-plugins-bad-free-extras
+-fluid-soundfont-lite-patches
 @gnome-desktop
+@games # added by alsadi@ojuba.org
 ojuba-gnome-settings
 @office
 
