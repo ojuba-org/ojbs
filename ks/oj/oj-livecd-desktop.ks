@@ -7,6 +7,7 @@
 -fluid-soundfont-lite-patches
 @gnome-desktop
 @games # added by alsadi@ojuba.org
+-mirrormagic
 ojuba-gnome-settings
 @office
 -java*
