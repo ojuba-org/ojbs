@@ -84,6 +84,7 @@ for $i (@a) {
 # make some defaults optional
 s:\Q<packagereq type="default">policycoreutils-gui</packagereq>\E:<packagereq type="optional">policycoreutils-gui</packagereq>:;
 s:\Q<packagereq type="mandatory">selinux-policy-targeted</packagereq>\E:<packagereq type="optional">selinux-policy-targeted</packagereq>:;
+s:\Q<packagereq type="mandatory">policycoreutils</packagereq>\E:<packagereq type="optional">policycoreutils</packagereq>:;
 s:\Q<packagereq type="default">setroubleshoot</packagereq>\E:<packagereq type="optional">setroubleshoot</packagereq>:;
 s:\Q<packagereq type="default">gnome-games</packagereq>\E:<packagereq type="optional">gnome-games</packagereq>:;
 s:\Q<packagereq type="default">gnome-games-help</packagereq>\E:<packagereq type="optional">gnome-games-help</packagereq>:;
