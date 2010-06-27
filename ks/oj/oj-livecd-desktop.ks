@@ -9,6 +9,9 @@
 @games # added by alsadi@ojuba.org
 ojuba-gnome-settings
 @office
+-java*
+-jpackage*
+-*gcj*
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
