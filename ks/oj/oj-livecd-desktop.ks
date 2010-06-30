@@ -8,6 +8,8 @@
 @gnome-desktop
 @games # added by alsadi@ojuba.org
 -mirrormagic
+-pengupop
+
 ojuba-gnome-settings
 @office
 -java*
