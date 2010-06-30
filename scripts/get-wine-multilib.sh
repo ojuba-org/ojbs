@@ -1,5 +1,5 @@
 #! /bin/bash
-[ $( uname -p ) != "x86_64"] && {
+[ $( uname -p ) != "x86_64" ] && {
   echo "not needed"
   exit 1
 }
