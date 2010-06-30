@@ -1,8 +1,5 @@
 %include repos-offline.ks
 # internet repos
-repo --name=oj4 --mirrorlist=http://www.ojuba.org/.mirrors-oj4-$basearch
-repo --name=oj4-updates --mirrorlist=http://www.ojuba.org/.mirrors-oj4-$basearch-updates
-repo --name=oj4-testing --mirrorlist=http://www.ojuba.org/.mirrors-oj4-$basearch-testing
 
 repo --name=released --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-13&arch=$basearch
 repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f13&arch=$basearch
