@@ -41,6 +41,7 @@ isomd5sum
 
 -fedora-release*
 ojuba-release
+-ojuba-docs
 
 %end
 

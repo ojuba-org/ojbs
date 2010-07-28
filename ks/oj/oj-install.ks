@@ -392,6 +392,7 @@ kernel-devel
 kernel-doc
 cmake
 qt-creator
+lazarus
 fuse-devel
 fuse-python
 gvfs-devel
