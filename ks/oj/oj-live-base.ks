@@ -401,8 +401,8 @@ touch /var/lib/readahead/early.sorted
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/waqf-ar.txt $LIVE_ROOT/LICENSE-ar.txt
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/waqf-en.txt $LIVE_ROOT/LICENSE-en.txt
-cp $INSTALL_ROOT/usr/share/ojuba-documents/faq.html $LIVE_ROOT/
-cp $INSTALL_ROOT/usr/share/ojuba-documents/vga.html $LIVE_ROOT/
+cp $INSTALL_ROOT/usr/share/doc/HTML/ojuba-linux-docs/vga.html $LIVE_ROOT/
+cp $INSTALL_ROOT/usr/share/doc/HTML/ojuba-linux-docs/أسئلة_متكررة.html $LIVE_ROOT/faq.html
 
 # cp $INSTALL_ROOT/usr/share/doc/HTML/readme-live-image/en_US/readme-live-image-en_US.txt $LIVE_ROOT/README
 
