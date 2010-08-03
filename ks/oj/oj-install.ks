@@ -605,6 +605,7 @@ uget
 openoffice.org-langpack-ar
 hunspell-ar
 hijra-applet
+kde-plasma-athkar
 minbar
 arabeyes-core-fonts
 arabeyes-decorative-fonts
