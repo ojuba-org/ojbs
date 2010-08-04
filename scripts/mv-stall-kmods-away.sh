@@ -8,6 +8,7 @@ pushd $(dirname "$0")/..
 . buildsys.conf
 [ -d  localrepos/.old_rpms ] || mkdir localrepos/.old_rpms
 dirs=$( ls -d localrepos/[^.]* | grep -v wine )
-find $dirs -name '*.i[3456]86.rpm' | xargs -r /bin/mv -t localrepos/.i686
-find $dirs -name 'kmod-*.rpm' -not -name 'kmod*-'"$r"'*.rpm' 
+
+find $dirs -name 'kmod-*.rpm' -not -name 'kmod*-'"$r"'*.rpm' | xargs -r /bin/mv -t localrepos/.old_rpms
+
 popd
