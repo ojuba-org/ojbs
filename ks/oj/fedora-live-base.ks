@@ -1,26 +1,40 @@
+# fedora-live-base.ks
+#
+# Defines the basics for all kickstarts in the fedora-live branch
+# Does not include package selection (other then mandatory)
+# Does not include localization packages or configuration
+#
+# Does includes "default" language configuration (kickstarts including
+# this template can override these settings)
 
+#lang en_US.UTF-8
+#keyboard us
+#timezone US/Eastern
 lang ar_SA.UTF-8
 keyboard ar-qwerty
 timezone Asia/Riyadh
 
+#auth --useshadow --enablemd5
+#selinux --enforcing
 auth --useshadow --enablemd5
 selinux --disabled
+
 firewall --enabled --service=mdns
 xconfig --startxonboot
 part / --size 3072 --fstype ext4
 services --enabled=NetworkManager --disabled=network,sshd
 
 %include repos.ks
-
 %packages
 @base-x
 @base
 @core
 @fonts
 @arabic-support
-# @input-methods
-# Exclude ibus-pinyin-open-phrase as it's large and somewhat optional
-# -ibus-pinyin-open-phrase
+#@input-methods
+# use a small pinyin db for live
+-ibus-pinyin-db-open-phrase
+# ibus-pinyin-db-android
 @admin-tools
 @dial-up
 @hardware-support
@@ -38,6 +52,9 @@ memtest86+
 # The point of a live image is to install
 anaconda
 isomd5sum
+
+# fpaste is very useful for debugging and very small
+fpaste
 
 -fedora-release*
 ojuba-release
@@ -85,6 +102,9 @@ exists() {
 }
 
 touch /.liveimg-configured
+
+# Make sure we don't mangle the hardware clock on shutdown
+ln -sf /dev/null /etc/systemd/system/hwclock-save.service
 
 # mount live image
 if [ -b \`readlink -f /dev/live\` ]; then
@@ -178,48 +198,42 @@ if [ -n "\$configdone" ]; then
   exit 0
 fi
 
-# add live user with no passwd
+# add fedora user with no passwd
 action "Adding live user" useradd \$USERADDARGS -c "Live System User" liveuser
 passwd -d liveuser > /dev/null
 
 # turn off firstboot for livecd boots
 chkconfig --level 345 firstboot off 2>/dev/null
+# We made firstboot a native systemd service, so it can no longer be turned
+# off with chkconfig. It should be possible to turn it off with systemctl, but
+# that doesn't work right either. For now, this is good enough: the firstboot
+# service will start up, but this tells it not to run firstboot. I suspect the
+# other services 'disabled' below are not actually getting disabled properly,
+# with systemd, but we can look into that later. - AdamW 2010/08 F14Alpha
+echo "RUN_FIRSTBOOT=NO" > /etc/sysconfig/firstboot
+
+# don't use prelink on a running live image
+sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink &>/dev/null || :
 
 # don't start yum-updatesd for livecd boots
-chkconfig --level 345 yum-updatesd off 2>/dev/null
+chkconfig --level 345 yum-updatesd off 2>/dev/null || :
 
 # turn off mdmonitor by default
-chkconfig --level 345 mdmonitor off 2>/dev/null
+chkconfig --level 345 mdmonitor off 2>/dev/null || :
 
 # turn off setroubleshoot on the live image to preserve resources
-chkconfig --level 345 setroubleshoot off 2>/dev/null
+chkconfig --level 345 setroubleshoot off 2>/dev/null || :
 
-# don't do packagekit checking by default
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t string /apps/gnome-packagekit/update-icon/frequency_get_updates never >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t string /apps/gnome-packagekit/update-icon/frequency_get_upgrades never >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t string /apps/gnome-packagekit/update-icon/frequency_refresh_cache never >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/update-icon/notify_available false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/update-icon/notify_distro_upgrades false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/enable_check_firmware false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/enable_check_hardware false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/enable_codec_helper false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/enable_font_helper false >/dev/null
-gconftool-2 --direct --config-source=xml:readwrite:/etc/gconf/gconf.xml.defaults -s -t bool /apps/gnome-packagekit/enable_mime_type_helper false >/dev/null
-
+# don't enable the gnome-settings-daemon packagekit plugin
+gsettings set org.gnome.settings-daemon.plugins.updates active 'false' || :
 
 # don't start cron/at as they tend to spawn things which are
 # disk intensive that are painful on a live image
-chkconfig --level 345 crond off 2>/dev/null
-chkconfig --level 345 atd off 2>/dev/null
-chkconfig --level 345 anacron off 2>/dev/null
-chkconfig --level 345 readahead_early off 2>/dev/null
-chkconfig --level 345 readahead_later off 2>/dev/null
+chkconfig --level 345 crond off 2>/dev/null || :
+chkconfig --level 345 atd off 2>/dev/null || :
 
 # Stopgap fix for RH #217966; should be fixed in HAL instead
 touch /media/.hal-mtab
-
-# workaround clock syncing on shutdown that we don't want (#297421)
-sed -i -e 's/hwclock/no-such-hwclock/g' /etc/rc.d/init.d/halt
 
 # and hack so that we eject the cd on shutdown if we're using a CD...
 if strstr "\`cat /proc/cmdline\`" CDLABEL= ; then
@@ -270,69 +284,10 @@ for o in \`cat /proc/cmdline\` ; do
         ks="--kickstart=\${o#ks=}"
         ;;
     xdriver=*)
-        xdriver="--set-driver=\${o#xdriver=}"
+        xdriver="\${o#xdriver=}"
         ;;
     esac
 done
-
-# this is a bad hack to work around #460581 for the geode
-# purely to help move testing along for now
-if [ \`grep -c Geode /proc/cpuinfo\` -ne 0 ]; then
-  cat > /etc/X11/xorg.conf <<FOE
-Section "ServerLayout"
-	Identifier     "Default Layout"
-	Screen      0  "Screen0" 0 0
-	InputDevice    "Keyboard0" "CoreKeyboard"
-EndSection
-
-Section "InputDevice"
-# keyboard added by rhpxl
-	Identifier  "Keyboard0"
-	Driver      "kbd"
-	Option      "XkbModel" "pc105"
-	Option      "XkbLayout" "us,ara"
-	Option      "XkbOptions" "grp_led:scroll,terminate:ctrl_alt_bksp,grp:alt_shift_toggle,altwin:super_win"
-	Option      "XkbVariant" "alt-intl,qwerty"
-
-EndSection
-
-Section "Monitor"
-	Identifier  "Monitor0"
-	HorizSync   30-67
-	VertRefresh 48-52
-	DisplaySize 152 114
-	Mode "1200x900"
-		DotClock 57.275
-		HTimings 1200 1208 1216 1240
-		VTimings 900 905 908 912
-		Flags    "-HSync" "-VSync"
-	EndMode
-EndSection
-
-Section "Device"
-	Identifier  "Videocard0"
-	Driver      "amd"
-	VendorName  "Advanced Micro Devices, Inc."
-	BoardName   "AMD Geode GX/LX"
-
-	Option     "AccelMethod" "EXA"
-	Option     "NoCompression" "true"
-        Option     "MigrationHeuristic" "greedy"
-	Option     "PanelGeometry" "1200x900"
-EndSection
-
-Section "Screen"
-	Identifier "Screen0"
-	Device     "Videocard0"
-	Monitor    "Monitor0"
-	DefaultDepth 16
-	SubSection "Display"
-		Depth   16
-		Modes   "1200x900"
-	EndSubSection
-EndSection
-FOE
-fi
 
 # if liveinst or textinst is given, start anaconda
 if strstr "\`cat /proc/cmdline\`" liveinst ; then
@@ -346,7 +301,12 @@ fi
 
 # configure X, allowing user to override xdriver
 if [ -n "\$xdriver" ]; then
-   exists system-config-display --noui --reconfig --set-depth=24 \$xdriver
+   cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
+Section "Device"
+	Identifier	"Videocard0"
+	Driver	"\$xdriver"
+EndSection
+FOE
 fi
 
 # sound up by < alsadi@ojuba.org
@@ -364,6 +324,8 @@ done
 
 EOF
 
+
+
 chmod 755 /etc/rc.d/init.d/livesys
 /sbin/restorecon /etc/rc.d/init.d/livesys
 /sbin/chkconfig --add livesys
@@ -378,12 +340,15 @@ for i in /etc/pki/rpm-gpg/RPM-GPG-KEY-*
 do
   rpm --import $i > /dev/null || :
 done
-echo "Packages within this LiveCD"
-echo "---- PACKAGE LISTING STARTS HERE ---"
-rpm -qa
-echo "---- PACKAGE LISTING ENDS HERE ---"
+echo "-- START LISTING: Packages within this LiveCD --"
+rpm --qf '%{size} %{name}\n' -qa | sort -rn
+echo "-- END LISTING: Packages within this LiveCD --"
+
+# Note that running rpm recreates the rpm db files which aren't needed or wanted
+rm -f /var/lib/rpm/__db*
+
 # go ahead and pre-make the man -k cache (#455968)
-/usr/sbin/makewhatis -w
+/usr/bin/mandb
 
 # save a little bit of space at least...
 rm -f /boot/initramfs*
@@ -391,20 +356,13 @@ rm -f /boot/initramfs*
 rm -f /core*
 
 # convince readahead not to collect
-rm -f /.readahead_collect
-touch /var/lib/readahead/early.sorted
+# FIXME: for systemd
 
 %end
 
 
 %post --nochroot
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
-cp $INSTALL_ROOT/usr/share/doc/*-release-*/waqf-ar.txt $LIVE_ROOT/LICENSE-ar.txt
-cp $INSTALL_ROOT/usr/share/doc/*-release-*/waqf-en.txt $LIVE_ROOT/LICENSE-en.txt
-cp $INSTALL_ROOT/usr/share/doc/HTML/ojuba-linux-docs/vga.html $LIVE_ROOT/
-cp $INSTALL_ROOT/usr/share/doc/HTML/ojuba-linux-docs/أسئلة_متكررة.html $LIVE_ROOT/faq.html
-
-# cp $INSTALL_ROOT/usr/share/doc/HTML/readme-live-image/en_US/readme-live-image-en_US.txt $LIVE_ROOT/README
 
 # only works on x86, x86_64
 if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then

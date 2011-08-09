@@ -42,13 +42,17 @@ s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n     
 
 # base-X
 s:^(\s*\Q<packagereq type="mandatory">xorg-x11-xinit</packagereq>\E):${1}
-\n<packagereq type="default">occ</packagereq>\n\n<packagereq type="default">ojuba-desktop-settings</packagereq>\n<packagereq type="default">ojuba-samples</packagereq>\n<packagereq type="default">ojuba-samples-thawab</packagereq>\n<packagereq type="mandatory">ojuba-logos</packagereq>\n<packagereq type="default">thawab</packagereq>\n<packagereq type="default">othman</packagereq>\n<packagereq type="default">minbar</packagereq>\n<packagereq type="default">monajat-applet</packagereq>\n<packagereq type="default">istanbul</packagereq>\n<packagereq type="default">ojuba-docs</packagereq>\n<packagereq type="default">ojuba-linux-docs</packagereq>\n<packagereq type="default">ojuba-personal-lock</packagereq>\n<packagereq type="default">ojuba-virtual-cd</packagereq><packagereq type="default">numlockx</packagereq>\n<packagereq type="default">mlterm</packagereq>\n<packagereq type="default">freetype-freeworld</packagereq>\n<packagereq type="default">system-config-display</packagereq>\n<packagereq type="default">msttcore-fonts</packagereq>\n<packagereq type="default">stardict</packagereq>\n<packagereq type="default">gpaint-2</packagereq>\n:;
+\n<packagereq type="default">occ</packagereq>\n\n<packagereq type="default">ojuba-desktop-settings</packagereq>\n<packagereq type="default">ojuba-samples</packagereq>\n<packagereq type="default">ojuba-samples-thawab</packagereq>\n<packagereq type="mandatory">ojuba-logos</packagereq>\n<packagereq type="default">thawab</packagereq>\n<packagereq type="default">othman</packagereq>\n<packagereq type="default">monajat-applet</packagereq>\n<packagereq type="default">istanbul</packagereq>\n<packagereq type="default">ojuba-docs</packagereq>\n<packagereq type="default">ojuba-linux-docs</packagereq>\n<packagereq type="default">ojuba-personal-lock</packagereq>\n<packagereq type="default">ojuba-virtual-cd</packagereq><packagereq type="default">numlockx</packagereq>\n<packagereq type="default">mlterm</packagereq>\n<packagereq type="default">freetype-freeworld</packagereq>\n<packagereq type="default">system-config-display</packagereq>\n<packagereq type="default">msttcore-fonts</packagereq>\n<packagereq type="default">stardict</packagereq>\n<packagereq type="default">gpaint-2</packagereq>\n:;
 
 # games
-s:^(\s*\Q<packagereq type="default">joystick</packagereq>\E):${1}\n<packagereq type="default">games-menus</packagereq>\n<packagereq type="default">atomix</packagereq>\n<packagereq type="default">heroes</packagereq>\n<packagereq type="default">heroes-sound-effects</packagereq>\n<packagereq type="default">KoboDeluxe</packagereq>\n<packagereq type="default">mirrormagic</packagereq>\n<packagereq type="default">pengupop</packagereq>\n<packagereq type="default">puzzles</packagereq>\n:;
+s:^(\s*\Q<packagereq type="default">joystick</packagereq>\E):${1}\n<packagereq type="default">games-menus</packagereq>\n<packagereq type="default">atomix</packagereq>\n<packagereq type="default">heroes</packagereq>\n<packagereq type="default">heroes-sound-effects</packagereq>\n<packagereq type="default">KoboDeluxe</packagereq>\n<packagereq type="default">mirrormagic</packagereq>\n<packagereq type="default">pengupop</packagereq>\n<packagereq type="default">puzzles</packagereq>\n<packagereq type="default">zaz</packagereq>\n:;
 
 # gnome
-s:^(\s*\Q<packagereq type="mandatory">fedora-gnome-theme</packagereq>\E):<packagereq type="mandatory">ojuba-gnome-theme</packagereq>\n<packagereq type="mandatory">ojuba-gnome-settings</packagereq>\n:;
+# in o5 we do not have fedora/ojuba-gnome-theme nor ojuba-gnome-settings
+# s:^(\s*\Q<packagereq type="mandatory">fedora-gnome-theme</packagereq>\E):<packagereq type="mandatory">ojuba-gnome-theme</packagereq>\n<packagereq type="mandatory">ojuba-gnome-settings</packagereq>\n:;
+
+s:^(\s*\Q<packagereq type="mandatory">gnome-panel</packagereq>\E):${1}\n<packagereq type="default">gnome-shell-extensions-alternative-status-menu</packagereq>\n<packagereq type="default">gnome-shell-extensions-user-theme</packagereq>\n<packagereq type="default">gnome-shell-extensions-common</packagereq>\n<packagereq type="default">gnome-shell-extensions-places-menu</packagereq>\n<packagereq type="default">gnome-shell-extension-theme-selector</packagereq>\n<packagereq type="default">gnome-shell-extension-remove-accessibility-icon</packagereq>\n:;
+
 
 # firefox
 s:^(\s*\Q<packagereq type="default">firefox</packagereq>\E):      <packagereq type="mandatory">firefox</packagereq>\n      <packagereq type="mandatory">firefox-ojuba-extra</packagereq>\n      <packagereq type="default">flash-plugin</packagereq>\n      <packagereq type="default">uget</packagereq>\n      <packagereq type="default">libflashsupport</packagereq>:;
@@ -57,7 +61,9 @@ s:^(\s*\Q<packagereq type="default">firefox</packagereq>\E):      <packagereq ty
 # arabic support
 s:^(\s*\Q<packagereq type="default">kacst-\E[^-]*\Q-fonts</packagereq>\E)::;
 
-s:^(\s*\Q<packagereq type="conditional" requires="aspell">aspell-ar</packagereq>\E):${1}\n      <packagereq type="conditional" requires="gtk2">gtk2-immodule-xim</packagereq>\n      <packagereq type="conditional" requires="stardict">stardict-Arabeyes-en-ar</packagereq>\n      <packagereq type="conditional" requires="stardict">stardict-Babylon-ar-en</packagereq>\n       <packagereq type="default">kacst-fonts</packagereq>\n<packagereq type="default">arabeyes-core-fonts</packagereq>\n      <packagereq type="default">arabeyes-decorative-fonts</packagereq>\n      <packagereq type="default">hijra-applet</packagereq>\n      <packagereq type="default">kfgqpc-fonts</packagereq>\n      <packagereq type="default">me_quran-fonts</packagereq>\n      <packagereq type="default">msttcore-fonts</packagereq>\n:;
+s:^(\s*\Q<packagereq type="conditional" requires="aspell">aspell-ar</packagereq>\E):${1}\n      
+<packagereq type="conditional" requires="hijra-applet">gnome-shell-extension-hijra</packagereq>
+<packagereq type="conditional" requires="gtk2">gtk2-immodule-xim</packagereq>\n<packagereq type="conditional" requires="gtk3">gtk3-immodule-xim</packagereq>\n      <packagereq type="conditional" requires="stardict">stardict-Arabeyes-en-ar</packagereq>\n      <packagereq type="conditional" requires="stardict">stardict-Babylon-ar-en</packagereq>\n       <packagereq type="default">kacst-fonts</packagereq>\n<packagereq type="default">arabeyes-core-fonts</packagereq>\n      <packagereq type="default">arabeyes-decorative-fonts</packagereq>\n      <packagereq type="default">hijra-applet</packagereq>\n<packagereq type="default">kfgqpc-fonts</packagereq>\n      <packagereq type="default">me_quran-fonts</packagereq>\n      <packagereq type="default">msttcore-fonts</packagereq>\n:;
 
 
 # sound-and-video
@@ -67,8 +73,13 @@ gstreamer-plugins-bad-nonfree</packagereq>\n<packagereq type="default">gstreamer
 # make evolution optional
 s:\Q<packagereq type="\E[^"]+\Q">evolution\E:<packagereq type="optional">evolution:;
 
+# make shotwell optional
+s:\Q<packagereq type="\E[^"]+\Q">shotwell\E:<packagereq type="optional">shotwell:;
+
+s:\Q<packagereq type="\E[^"]+\Q">gthumb\E:<packagereq type="default">gthumb:;
+
 # make some fonts optional
-@a=qw(abyssinica-fonts cjkuni-uming-fonts jomolhari-fonts khmeros-base-fonts lklug-fonts padauk-fonts paktype-fonts smc-meera-fonts stix-fonts thai-scalable-waree-fonts un-core-fonts-dotum vlgothic-fonts);
+@a=qw(abyssinica-fonts cjkuni-uming-fonts jomolhari-fonts khmeros-base-fonts lklug-fonts padauk-fonts paktype-fonts smc-meera-fonts stix-fonts thai-scalable-waree-fonts un-core-fonts-dotum vlgothic-fonts wqy-zenhei-fonts);
 for $i (@a) {
   s:\Q<packagereq type="default">\E${i}\Q</packagereq>\E:<packagereq type="optional">$i</packagereq>:;
 }
