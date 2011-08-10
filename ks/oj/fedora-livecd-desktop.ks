@@ -20,6 +20,9 @@ gimp
 -gutenprint
 -gutenprint-cups
 -rhythmbox
+-pitivi
+-istanbul
+-stardict
 libitl
 
 -gstreamer-plugins-bad-free-extras
