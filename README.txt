@@ -10,3 +10,12 @@
   * run scripts/cp-build-cache.sh
   * then set-off-line.sh then build again
 
+NOTES:
+  * your repos should have ojuba-release and releated packages
+  * your repos should ojuba patched version of
+    * anaconda
+    * system-config-keyboard
+    * system-setup-keyboard
+  * system-config-keyboard should be installed on host machine BEFORE building system-setup-keyboard
+  * not to be confusing with xkeyboard-config which is for right alt-shift bug
+
