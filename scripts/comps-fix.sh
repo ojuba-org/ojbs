@@ -1,5 +1,7 @@
 #! /bin/bash
 pushd $(dirname "$0")/..
+base_arch=`[ $(arch) != 'x86_64' ] && echo "i386" || echo "x86_64"`
+
 # TODO: mark some packages as default instead of adding them
 
 # kmod-qc-usb kmod-madwifi
@@ -38,7 +40,7 @@ s:^(\s*\Q<packagereq type="mandatory">cups</packagereq>\E):${1}\n<packagereq typ
 
 
 # base
-s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n      <packagereq type="default">xz-lzma-compat</packagereq>\n<packagereq type="default">p7zip</packagereq>\n<packagereq type="default">xz</packagereq>\n<packagereq type="default">unrar</packagereq>\n<packagereq type="default">yum-plugin-fastestmirror</packagereq>\n<packagereq type="default">yum-presto</packagereq>\n<packagereq type="default">google-release</packagereq>\n<packagereq type="default">adobe-release-x86_64</packagereq>\n<packagereq type="default">adobe-release-i386</packagereq>\n<packagereq type="default">virtualbox-release</packagereq>\n<packagereq type="default">chromium-release</packagereq>\n<packagereq type="default">rpmfusion-free-release</packagereq>\n      <packagereq type="default">rpmfusion-nonfree-release</packagereq>\n:;
+s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n      <packagereq type="default">xz-lzma-compat</packagereq>\n<packagereq type="default">p7zip</packagereq>\n<packagereq type="default">xz</packagereq>\n<packagereq type="default">unrar</packagereq>\n<packagereq type="default">yum-plugin-fastestmirror</packagereq>\n<packagereq type="default">yum-presto</packagereq>\n<packagereq type="default">google-release</packagereq>\n<packagereq type="default">adobe-release-'$base_arch'</packagereq>\n<packagereq type="default">virtualbox-release</packagereq>\n<packagereq type="default">chromium-release</packagereq>\n<packagereq type="default">rpmfusion-free-release</packagereq>\n      <packagereq type="default">rpmfusion-nonfree-release</packagereq>\n:;
 
 # base-X
 s:^(\s*\Q<packagereq type="mandatory">xorg-x11-xinit</packagereq>\E):${1}
