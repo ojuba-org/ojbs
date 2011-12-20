@@ -10,5 +10,7 @@ repo --name=rpmfusion-free-releasedupdates --mirrorlist=http://mirrors.rpmfusion
 repo --name=rpmfusion-nonfree-released --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-16&arch=$basearch
 repo --name=rpmfusion-nonfree-releasedupdates --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-updates-released-16&arch=$basearch
 
+repo --name=adobe --baseurl=http://linuxdownload.adobe.com/linux/$basearch/
+
 # livna for dvdcss
 #repo --name=livna --baseurl=http://rpm.livna.org/repo/16/$basearch/

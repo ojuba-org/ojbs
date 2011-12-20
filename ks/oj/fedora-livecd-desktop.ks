@@ -30,9 +30,9 @@ libitl
 
 # TODO: remove those
 kmod-wl
-kmod-rt2860
-kmod-rt2870
-kmod-rt3070
+#kmod-rt2860
+#kmod-rt2870
+#kmod-rt3070
 
 # needed to disable selinux
 system-config-firewall-base
@@ -46,7 +46,7 @@ system-config-firewall-base
 -shotwell
 
 chmviewkit
-#java-1.5.0-gcj
+-java-1.5.0-gcj
 libreoffice-opensymbol-fonts
 libreoffice-ogltrans
 -libreoffice-report-builder
@@ -73,9 +73,11 @@ libreoffice-impress
 # Temporary list of things removed from comps but not synced yet
 -specspo
 
-# Drop the Java plugin
--icedtea-web
--java-1.6.0-openjdk
+# Java plugin is small when compared to java needed by office
+icedtea-web
+java-1.6.0-openjdk
+-java-1.7.0-openjdk
+
 
 # Drop things that pull in perl
 -linux-atm
