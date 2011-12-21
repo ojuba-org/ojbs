@@ -27,6 +27,11 @@ services --enabled=NetworkManager,dhcdbd --disabled=network,sshd,irqbalance,send
 tcsh
 kernel*
 dracut-*
+# grub-efi and grub2 and efibootmgr so anaconda can use the right one on install. 
+grub-efi
+grub2
+efibootmgr
+
 # Desktop Packages
 @gnome-desktop
 @kde-desktop
