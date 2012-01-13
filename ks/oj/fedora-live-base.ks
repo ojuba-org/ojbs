@@ -286,6 +286,18 @@ for o in \`cat /proc/cmdline\` ; do
     xdriver=*)
         xdriver="\${o#xdriver=}"
         ;;
+    xscreen=*)
+        xscreen="\${o#xscreen=}"
+        ;;
+    LANG=*)
+        LiveLocale="\${o#LANG=}"
+        ;;
+    lang=*)
+        LiveLocale="\${o#lang=}"
+        ;;
+    live_locale=*)
+        LiveLocale="\${o#live_locale=}"
+        ;;
     esac
 done
 
@@ -298,6 +310,19 @@ if strstr "\`cat /proc/cmdline\`" textinst ; then
    plymouth --quit
    /usr/sbin/liveinst --text \$ks
 fi
+
+
+# allowing user to override gui lang < by Ehab El-Gedawy <ehabsas@gmail.com>
+[ -z \$LiveLocale ] && LiveLocale=ar_SA.UTF-8
+cat >/etc/sysconfig/i18n << FOE
+LANG="\$LiveLocale"
+FOE
+
+# enable SysRQ < by Ehab El-Gedawy <ehabsas@gmail.com>
+sed -i '/kernel.sysrq/ s/=.*/= 1/' /etc/sysctl.conf
+echo 1 > /proc/sys/kernel/sysrq
+
+
 
 # configure X, allowing user to override xdriver
 if [ -n "\$xdriver" ]; then
