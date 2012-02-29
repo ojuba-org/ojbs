@@ -341,7 +341,7 @@ if [ -n "\$xscreen" ]; then
    cat >> /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Monitor"
 	Identifier	"Monitor0"
-	\$(cvt \${xscreen/x/\ })
+	\$(cvt \${xscreen/x/\ } 2>/dev/null)
 EndSection
 FOE
 SCREEN="\${SCREEN}\n\tMonitor\t\"Monitor0\""
