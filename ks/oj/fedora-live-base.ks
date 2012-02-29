@@ -323,13 +323,35 @@ sed -i '/kernel.sysrq/ s/=.*/= 1/' /etc/sysctl.conf
 echo 1 > /proc/sys/kernel/sysrq
 
 
-
 # configure X, allowing user to override xdriver
+SCREEN=''
+[ -n "\$xdriver" -o -n "\$xscreen" ] && echo > /etc/X11/xorg.conf.d/00-xdriver.conf
 if [ -n "\$xdriver" ]; then
-   cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
+   cat >> /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
 	Identifier	"Videocard0"
 	Driver	"\$xdriver"
+EndSection
+FOE
+SCREEN='\tDevice\t"Videocard0"'
+fi
+
+# configure X, allowing user to override screen resolution < by Ehab El-Gedawy <ehabsas@gmail.com>
+if [ -n "\$xscreen" ]; then
+   cat >> /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
+Section "Monitor"
+	Identifier	"Monitor0"
+	\$(cvt \${xscreen/x/\ })
+EndSection
+FOE
+SCREEN="\${SCREEN}\n\tMonitor\t\"Monitor0\""
+fi
+
+if [ -n "\$SCREEN" ]; then
+cat >> /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
+Section "Screen"
+	Identifier	"Screen0"
+	\$(echo -e \$SCREEN)
 EndSection
 FOE
 fi
