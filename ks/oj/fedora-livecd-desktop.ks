@@ -10,6 +10,7 @@
 @arabic-support
 @games
 gimp
+-aisleriot
 -mirrormagic
 -pengupop
 -zaz
