@@ -51,6 +51,7 @@ chmviewkit
 libreoffice-opensymbol-fonts
 libreoffice-ogltrans
 -libreoffice-report-builder
+-libreoffice-calc
 -libreoffice-draw
 -libreoffice-math
 -libreoffice-ure
