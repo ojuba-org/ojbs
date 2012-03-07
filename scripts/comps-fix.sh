@@ -81,7 +81,7 @@ s:\Q<packagereq type="\E[^"]+\Q">shotwell\E:<packagereq type="optional">shotwell
 s:\Q<packagereq type="\E[^"]+\Q">gthumb\E:<packagereq type="default">gthumb:;
 
 # make some fonts optional
-@a=qw(abyssinica-fonts cjkuni-uming-fonts jomolhari-fonts khmeros-base-fonts lklug-fonts padauk-fonts paktype-fonts smc-meera-fonts stix-fonts thai-scalable-waree-fonts un-core-fonts-dotum vlgothic-fonts wqy-zenhei-fonts);
+@a=qw(un-core-dotum-fonts abyssinica-fonts cjkuni-uming-fonts jomolhari-fonts khmeros-base-fonts lklug-fonts padauk-fonts paktype-fonts smc-meera-fonts stix-fonts thai-scalable-waree-fonts un-core-fonts-dotum vlgothic-fonts wqy-zenhei-fonts);
 for $i (@a) {
   s:\Q<packagereq type="default">\E${i}\Q</packagereq>\E:<packagereq type="optional">$i</packagereq>:;
 }
