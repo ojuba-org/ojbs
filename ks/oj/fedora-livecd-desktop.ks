@@ -68,7 +68,7 @@ libreoffice-ogltrans
 libreoffice-langpack-ar
 -libreoffice-langpack-en
 libreoffice-writer
-libreoffice-calc
+#libreoffice-calc
 libreoffice-impress
 
 
