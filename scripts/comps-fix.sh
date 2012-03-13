@@ -40,7 +40,7 @@ s:^(\s*\Q<packagereq type="mandatory">cups</packagereq>\E):${1}\n<packagereq typ
 
 
 # base
-s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n      <packagereq type="default">xz-lzma-compat</packagereq>\n<packagereq type="default">p7zip</packagereq>\n<packagereq type="default">xz</packagereq>\n<packagereq type="default">unrar</packagereq>\n<packagereq type="default">yum-plugin-fastestmirror</packagereq>\n<packagereq type="default">yum-presto</packagereq>\n<packagereq type="default">gimp-unstable-release</packagereq>\n<packagereq type="default">google-release</packagereq>\n<packagereq type="default">adobe-release-'$base_arch'</packagereq>\n<packagereq type="default">virtualbox-release</packagereq>\n<packagereq type="default">chromium-release</packagereq>\n<packagereq type="default">rpmfusion-free-release</packagereq>\n      <packagereq type="default">rpmfusion-nonfree-release</packagereq>\n:;
+s:^(\s*\Q<packagereq type="mandatory">cronie-anacron</packagereq>\E):${1}\n      <packagereq type="default">xz-lzma-compat</packagereq>\n<packagereq type="default">p7zip</packagereq>\n<packagereq type="default">xz</packagereq>\n<packagereq type="default">unrar</packagereq>\n<packagereq type="default">yum-plugin-fastestmirror</packagereq>\n<packagereq type="default">yum-plugin-downloadonly</packagereq>\n<packagereq type="default">lm_sensors</packagereq>\n<packagereq type="default">yum-presto</packagereq>\n<packagereq type="default">gimp-unstable-release</packagereq>\n<packagereq type="default">google-release</packagereq>\n<packagereq type="default">adobe-release-'$base_arch'</packagereq>\n<packagereq type="default">virtualbox-release</packagereq>\n<packagereq type="default">chromium-release</packagereq>\n<packagereq type="default">rpmfusion-free-release</packagereq>\n      <packagereq type="default">rpmfusion-nonfree-release</packagereq>\n:;
 
 # base-X
 s:^(\s*\Q<packagereq type="mandatory">xorg-x11-xinit</packagereq>\E):${1}
@@ -106,6 +106,9 @@ s:\Q<packagereq type="mandatory">audit</packagereq>\E:<packagereq type="optional
 s:\Q<packagereq type="default">gcalctool</packagereq>\E:<packagereq type="optional">gcalctool</packagereq>:;
 
 # make some optionals defaults
+
+s:\Q<packagereq type="\E[^"]+\Q">nautilus-open-terminal\E:<packagereq type="default">nautilus-open-terminal:;
+
 s:\Q<packagereq type="optional">p7zip</packagereq>\E:<packagereq type="default">p7zip</packagereq>:;
 
 s:\Q>java-1.6.0-openjdk\E:>java-1.6.0-sun:;
