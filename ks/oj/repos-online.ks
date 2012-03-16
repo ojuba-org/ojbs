@@ -12,6 +12,8 @@ repo --name=rpmfusion-nonfree-releasedupdates --mirrorlist=http://mirrors.rpmfus
 
 repo --name=gimp-unstable --baseurl=http://repos.fedorapeople.org/repos/nphilipp/gimp-unstable/fedora-$releasever/$basearch/
 
+repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
+
 repo --name=adobe --baseurl=http://linuxdownload.adobe.com/linux/$basearch/
 
 # livna for dvdcss
