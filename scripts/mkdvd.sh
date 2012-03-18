@@ -4,7 +4,7 @@ pushd $(dirname "$0")/..
 [ -d  pungi_result ] || mkdir pungi_result
 [ -d  pungi_cache ] || mkdir pungi_cache
 
-[ -d pungi_result/$ojuba_release/ ] && echo "directory pungi_result/$ojuba_release exists" && exit 1
+[ -d pungi_result/$oj/ ] && echo "directory pungi_result/$oj exists" && exit 1
 
 #time pungi --nosplitmedia --nosource --name ojuba --ver $ojuba_release --flavor=Desktop # ...
 
