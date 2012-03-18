@@ -8,7 +8,7 @@ pushd $(dirname "$0")/..
 
 #time pungi --nosplitmedia --nosource --name ojuba --ver $ojuba_release --flavor=Desktop # ...
 
-$out=dvd-out-$(date +%Y-%m-%d).txt
+out=dvd-out-$( date +%Y-%m-%d ).txt
 [ $is_testing -eq 1 ] && $args="" || $args="--isfinal"
 time pungi $args --nosource --name ojuba --ver $oj --flavor=Desktop \
   -c ks/oj/oj-install.ks --cachedir=$PWD/pungi_cache --destdir=$PWD/pungi_result 2>&1 | tee $out
