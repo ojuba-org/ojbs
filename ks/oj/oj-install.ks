@@ -85,17 +85,6 @@ wireshark-gnome
 @arabic-support
 @french-support
 @german-support
-# Size removals
--gimp-help
--java-1.6.0-openjdk-src
--xorg-x11-docs
--kernel-doc
--java-1.5.0-gcj-src
--java-1.5.0-gcj-devel
--libgcj-src
--*javadoc*
--frysk
--*gcj*
 
 #######################
 # extra xfce4 plugins 
@@ -736,6 +725,18 @@ memtest86+
 -Cg
 -dasher
 
+# Size removals
+-gimp-help
+-java-1.6.0-openjdk-src
+-xorg-x11-docs
+-kernel-doc
+-java-1.5.0-gcj-src
+-java-1.5.0-gcj-devel
+-libgcj-src
+-*javadoc*
+-frysk
+-*gcj*
+-R-core*
 
 # just to make sure
 ojuba-release
