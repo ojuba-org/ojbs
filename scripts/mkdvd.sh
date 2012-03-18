@@ -6,7 +6,8 @@ pushd $(dirname "$0")/..
 
 [ -d pungi_result/$ojuba_release/ ] && echo "directory pungi_result/$ojuba_release exists" && exit 1
 
-#time pungi --nosplitmedia --nosource --name ojuba --ver $ojuba_release --flavor=Desktop \
+#time pungi --nosplitmedia --nosource --name ojuba --ver $ojuba_release --flavor=Desktop # ...
+
 $out=dvd-out-$(date +%Y-%m-%d).txt
 [ $is_testing -eq 1 ] && $args="" || $args="--isfinal"
 time pungi $args --nosource --name ojuba --ver $oj --flavor=Desktop \
