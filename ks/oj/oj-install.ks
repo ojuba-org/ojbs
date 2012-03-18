@@ -736,7 +736,9 @@ memtest86+
 -*javadoc*
 -frysk
 -*gcj*
+-R
 -R-core*
+
 
 # just to make sure
 ojuba-release
