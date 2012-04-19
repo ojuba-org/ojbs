@@ -615,9 +615,10 @@ ojuba-mimic
 #gtk-recordmydesktop
 gstreamer-ffmpeg
 gstreamer-plugins-bad
-gstreamer-plugins-bad-extras
 gstreamer-python
 gstreamer-plugins-ugly
+# the next line added to remove dependency on timidity++-patches
+-gstreamer-plugins-bad-extras
 #smplayer
 dvgrab
 kino
