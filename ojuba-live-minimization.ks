@@ -4,7 +4,6 @@
 %packages
 
 # save some space
--samba-client
 -mpage
 -sox
 -hplip
@@ -17,14 +16,13 @@
 -wget
 
 # qlogic firmwares
--ql2100-firmware
--ql2200-firmware
--ql23xx-firmware
--ql2400-firmware
+#-ql2100-firmware
+#-ql2200-firmware
+#-ql23xx-firmware
 
 # scanning takes quite a bit of space :/
 -xsane
 -xsane-gimp
--sane-backends
+sane-backends
 
 %end
