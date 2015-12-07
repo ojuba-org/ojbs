@@ -1,0 +1,2 @@
+
+  * i think we have to merge ks/oj/ojuba-livecd-desktop.ks and ks/oj/ojuba-live-workstation.ks.
