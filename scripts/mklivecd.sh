@@ -10,7 +10,7 @@ cache=${buil_dir}cache
 [ -d  $tmp ] || mkdir -p $tmp
 [ -d  $cache ] || mkdir -p $cache
 cd $buil_dir
-time livecd-creator -dv --tmpdir=$tmp --cache=$cache --config=${config_dir}/ks/oj/ojuba-livecd-desktop.ks --fslabel=ojuba-$ojuba_release-live-$(uname -p) 2>&1 | tee ${buil_dir}/../LOG/out-$(uname -p)-$(date +%Y-%m-%d_%H%M%S).txt
+time livecd-creator -dv --tmpdir=$tmp --cache=$cache --config=${config_dir}/ks/oj/ojuba-live-workstation.ks --fslabel=ojuba-$ojuba_release-live-$(uname -p) 2>&1 | tee ${buil_dir}/../LOG/out-$(uname -p)-$(date +%Y-%m-%d_%H%M%S).txt
 chown -R $user ..
 popd
 
